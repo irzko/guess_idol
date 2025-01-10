@@ -26,36 +26,44 @@ class _SeedFormState extends State<SeedForm> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const Text(
-            'Guess Idol',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+      child: Container(
+        constraints: BoxConstraints(maxWidth: 640),
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          spacing: 16.0,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'Guess Idol',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          TextField(
-            controller: myController,
-            decoration: const InputDecoration(
-              border: InputBorder.none,
-              hintText: 'Enter your name',
+            TextField(
+              controller: myController,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(24.0)),
+                      borderSide: BorderSide.none),
+                  hintText: 'Enter your name',
+                  filled: true),
             ),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      PickCharacterScreen(seed: myController.text),
-                ),
-              );
-            },
-            child: const Text('Start'),
-          ),
-        ],
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        PickCharacterScreen(seed: myController.text),
+                  ),
+                );
+              },
+              child: const Text('Start'),
+            ),
+          ],
+        ),
       ),
     );
   }

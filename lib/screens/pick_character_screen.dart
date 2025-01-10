@@ -15,7 +15,11 @@ class PickCharacterScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text('Pick Character'),
         ),
-        body: CharacterDeck(seed: seed));
+        body: Center(
+          child: Container(
+              constraints: BoxConstraints(maxWidth: 640),
+              child: CharacterDeck(seed: seed)),
+        ));
   }
 }
 
@@ -57,13 +61,14 @@ class _CharacterDeckState extends State<CharacterDeck> {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
               crossAxisSpacing: 8,
-              childAspectRatio: 2 / 3,
+              childAspectRatio: 10 / 16,
               mainAxisSpacing: 8,
             ),
+            padding: const EdgeInsets.all(16.0),
             itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {
               return Card(
-                elevation: 4,
+                // elevation: 4,
                 clipBehavior: Clip.antiAlias,
                 child: Column(
                   children: <Widget>[
@@ -72,14 +77,15 @@ class _CharacterDeckState extends State<CharacterDeck> {
                       child: Image.network(
                         snapshot.data![index].image,
                         fit: BoxFit.cover,
-                        width: double.infinity,
+                        filterQuality: FilterQuality.low,
+                        // width: double.infinity,
                       ),
                     ),
                     Expanded(
                       child: Center(
                         child: Text(
                           snapshot.data![index].name,
-                          maxLines: 2,
+                          maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),

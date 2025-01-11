@@ -1,4 +1,3 @@
-// import 'dart:developer';
 
 import 'dart:convert';
 
@@ -7,7 +6,7 @@ import 'package:http/http.dart' as http;
 Future<List<Map<String, String>>> getGSheet(
     String spreadsheetId, String sheetId) async {
   final response = await http.get(Uri.parse(
-      'https://docs.google.com/spreadsheets/d/${spreadsheetId}/export?format=csv&id=${spreadsheetId}&gid=${sheetId}'));
+      'https://docs.google.com/spreadsheets/d/$spreadsheetId/export?format=csv&id=$spreadsheetId&gid=$sheetId'));
 
   if (response.statusCode != 200) {
     throw Exception("Failed to load data from Google Sheet");

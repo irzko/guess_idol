@@ -66,7 +66,7 @@ class MainApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp.router(
-        title: 'Provider Demo',
+        title: 'Guess Idol',
         debugShowCheckedModeBanner: false,
         routerConfig: router(),
         builder: (context, child) => FutureBuilder(

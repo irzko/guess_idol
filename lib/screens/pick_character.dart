@@ -15,7 +15,7 @@ class PickCharacter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pick Character'),
+        title: Text('Chọn nhân vật'),
         // back button
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -67,11 +67,11 @@ class _CharacterSelectorState extends State<CharacterSelector> {
           return GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
-              crossAxisSpacing: 4.0,
+              crossAxisSpacing: 2.0,
               childAspectRatio: 10.0 / 16.0,
-              mainAxisSpacing: 4.0,
+              mainAxisSpacing: 2.0,
             ),
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(2.0),
             itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {
               return GestureDetector(

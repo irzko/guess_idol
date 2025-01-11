@@ -119,11 +119,11 @@ class _CharacterSelectorState extends State<CharacterSelector> {
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    crossAxisSpacing: 4.0,
+                    crossAxisSpacing: 2.0,
                     childAspectRatio: 10.0 / 16.0,
-                    mainAxisSpacing: 4.0,
+                    mainAxisSpacing: 2.0,
                   ),
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(2.0),
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
                     return Card(

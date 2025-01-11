@@ -96,7 +96,6 @@ class _CharacterSelectorState extends State<CharacterSelector> {
                             snapshot.data![index].image,
                             fit: BoxFit.cover,
                             filterQuality: FilterQuality.low,
-                            // width: double.infinity,
                           ),
                         ),
                       ),

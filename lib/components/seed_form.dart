@@ -37,19 +37,20 @@ class _SeedFormState extends State<SeedForm> {
             ),
             TextField(
               controller: myController,
+              keyboardType: TextInputType.number,
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius:
                           const BorderRadius.all(Radius.circular(24.0)),
                       borderSide: BorderSide.none),
-                  hintText: 'Enter your name',
+                  hintText: 'Mã hạt giống',
                   filled: true),
             ),
             ElevatedButton(
               onPressed: () {
-                context.go(
-                    Uri(path: '/pick', queryParameters: {'seed': myController.text})
-                        .toString());
+                context.go(Uri(
+                    path: '/pick',
+                    queryParameters: {'seed': myController.text}).toString());
               },
               child: const Text('Start'),
             ),

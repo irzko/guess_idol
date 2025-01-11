@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guess_idol/models/character.dart';
@@ -21,7 +19,11 @@ class Play extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            context.go("/");
+            context.replace(
+              Uri(path: '/pick', queryParameters: {
+                'seed': queryParams['seed']!,
+              }).toString(),
+            );
           },
         ),
       ),
@@ -88,7 +90,7 @@ class _CharacterSelectorState extends State<CharacterSelector> {
                     child: Hero(
                       tag: selectedCharacter!.id,
                       child: Image.network(
-                        selectedCharacter!.image,
+                        selectedCharacter.image,
                         fit: BoxFit.cover,
                         filterQuality: FilterQuality.low,
                         // width: double.infinity,
@@ -98,7 +100,7 @@ class _CharacterSelectorState extends State<CharacterSelector> {
                   Expanded(
                     child: Center(
                       child: Text(
-                        selectedCharacter!.name,
+                        selectedCharacter.name,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -117,9 +119,9 @@ class _CharacterSelectorState extends State<CharacterSelector> {
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    crossAxisSpacing: 8.0,
+                    crossAxisSpacing: 4.0,
                     childAspectRatio: 10.0 / 16.0,
-                    mainAxisSpacing: 8.0,
+                    mainAxisSpacing: 4.0,
                   ),
                   padding: const EdgeInsets.all(16.0),
                   itemCount: snapshot.data!.length,

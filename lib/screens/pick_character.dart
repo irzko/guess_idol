@@ -67,19 +67,21 @@ class _CharacterSelectorState extends State<CharacterSelector> {
           return GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
-              crossAxisSpacing: 8.0,
+              crossAxisSpacing: 4.0,
               childAspectRatio: 10.0 / 16.0,
-              mainAxisSpacing: 8.0,
+              mainAxisSpacing: 4.0,
             ),
             padding: const EdgeInsets.all(16.0),
             itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-                  context.go(Uri(path: '/play', queryParameters: {
-                    'seed': widget.seed,
-                    'character': snapshot.data![index].id,
-                  }).toString());
+                  context.replace(
+                    Uri(path: '/play', queryParameters: {
+                      'seed': widget.seed,
+                      'character': snapshot.data![index].id,
+                    }).toString(),
+                  );
                 },
                 child: Card(
                   // elevation: 4,

@@ -71,7 +71,7 @@ class _CharacterSelectorState extends State<CharacterSelector> {
               childAspectRatio: 10.0 / 16.0,
               mainAxisSpacing: 2.0,
             ),
-            padding: const EdgeInsets.all(2.0),
+            padding: const EdgeInsets.all(4.0),
             itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {
               return GestureDetector(

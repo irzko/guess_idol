@@ -1,3 +1,4 @@
+import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guess_idol/models/character.dart';
@@ -126,30 +127,37 @@ class _CharacterSelectorState extends State<CharacterSelector> {
                   padding: const EdgeInsets.all(4.0),
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
-                    return Card(
-                      // elevation: 4,
-                      clipBehavior: Clip.antiAlias,
-                      child: Column(
-                        children: <Widget>[
-                          AspectRatio(
-                            aspectRatio: 3.0 / 4.0,
-                            child: Image.network(
-                              snapshot.data![index].image,
-                              fit: BoxFit.cover,
-                              filterQuality: FilterQuality.low,
-                              // width: double.infinity,
-                            ),
-                          ),
-                          Expanded(
-                            child: Center(
-                              child: Text(
-                                snapshot.data![index].name,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
+                    return FlipCard(
+                      fill: Fill.fillBack,
+                      direction: FlipDirection.HORIZONTAL,
+                      side: CardSide.FRONT,
+                      front: Card(
+                        clipBehavior: Clip.antiAlias,
+                        child: Column(
+                          children: <Widget>[
+                            AspectRatio(
+                              aspectRatio: 3.0 / 4.0,
+                              child: Image.network(
+                                snapshot.data![index].image,
+                                fit: BoxFit.cover,
+                                filterQuality: FilterQuality.low,
+                                // width: double.infinity,
                               ),
                             ),
-                          ),
-                        ],
+                            Expanded(
+                              child: Center(
+                                child: Text(
+                                  snapshot.data![index].name,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      back: Card(
+                        child: Text('Back'),
                       ),
                     );
                   },

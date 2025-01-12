@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guess_idol/models/character.dart';
 import 'package:guess_idol/models/character_deck.dart';
-import 'package:guess_idol/ultils/create_sheet_character.dart';
+import 'package:guess_idol/utils/create_sheet_character.dart';
 import 'dart:async';
 
 import 'package:provider/provider.dart';
@@ -98,9 +98,10 @@ class _CharacterSelectorState extends State<CharacterSelector> {
                             fit: BoxFit.cover,
                             filterQuality: FilterQuality.low,
                             progressIndicatorBuilder:
-                                (context, url, downloadProgress) =>
-                                    CircularProgressIndicator(
-                                        value: downloadProgress.progress),
+                                (context, url, downloadProgress) => Center(
+                              child: CircularProgressIndicator(
+                                  value: downloadProgress.progress),
+                            ),
                             errorWidget: (context, url, error) =>
                                 Icon(Icons.error),
                           ),

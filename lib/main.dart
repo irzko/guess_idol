@@ -6,7 +6,7 @@ import 'package:guess_idol/screens/play.dart';
 import 'package:guess_idol/screens/seed_initializer.dart';
 import 'package:provider/provider.dart';
 import 'package:guess_idol/models/character.dart';
-import 'package:guess_idol/ultils/get_gsheet.dart';
+import 'package:guess_idol/utils/get_gsheet.dart';
 
 void main() {
   runApp(const MainApp());

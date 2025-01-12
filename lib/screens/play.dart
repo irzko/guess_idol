@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -16,7 +17,6 @@ class Play extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // back button
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -90,11 +90,15 @@ class _CharacterSelectorState extends State<CharacterSelector> {
                     aspectRatio: 3.0 / 4.0,
                     child: Hero(
                       tag: selectedCharacter!.id,
-                      child: Image.network(
-                        selectedCharacter.image,
+                      child: CachedNetworkImage(
+                        imageUrl: selectedCharacter.image,
                         fit: BoxFit.cover,
                         filterQuality: FilterQuality.low,
-                        // width: double.infinity,
+                        progressIndicatorBuilder:
+                            (context, url, downloadProgress) =>
+                                CircularProgressIndicator(
+                                    value: downloadProgress.progress),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
                       ),
                     ),
                   ),
@@ -137,11 +141,16 @@ class _CharacterSelectorState extends State<CharacterSelector> {
                           children: <Widget>[
                             AspectRatio(
                               aspectRatio: 3.0 / 4.0,
-                              child: Image.network(
-                                snapshot.data![index].image,
+                              child: CachedNetworkImage(
+                                imageUrl: snapshot.data![index].image,
                                 fit: BoxFit.cover,
                                 filterQuality: FilterQuality.low,
-                                // width: double.infinity,
+                                progressIndicatorBuilder:
+                                    (context, url, downloadProgress) =>
+                                        CircularProgressIndicator(
+                                            value: downloadProgress.progress),
+                                errorWidget: (context, url, error) =>
+                                    Icon(Icons.error),
                               ),
                             ),
                             Expanded(

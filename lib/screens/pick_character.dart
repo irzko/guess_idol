@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:guess_idol/models/character.dart';
@@ -92,10 +93,16 @@ class _CharacterSelectorState extends State<CharacterSelector> {
                         aspectRatio: 3.0 / 4.0,
                         child: Hero(
                           tag: snapshot.data![index].id,
-                          child: Image.network(
-                            snapshot.data![index].image,
+                          child: CachedNetworkImage(
+                            imageUrl: snapshot.data![index].image,
                             fit: BoxFit.cover,
                             filterQuality: FilterQuality.low,
+                            progressIndicatorBuilder:
+                                (context, url, downloadProgress) =>
+                                    CircularProgressIndicator(
+                                        value: downloadProgress.progress),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
                           ),
                         ),
                       ),
